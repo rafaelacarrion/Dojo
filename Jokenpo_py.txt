@@ -1,0 +1,71 @@
+from random import randint
+from time import sleep
+itens = ('Pedra', 'Papel', 'Tesoura')
+Rodada = 'Sim'
+teste = 0
+contjogador = 0
+contcomputador = 0
+contempate = 0
+while Rodada == 'Sim':
+    Computador = randint (0, 2)
+    print ( '''Suas opcoes:
+        [ 0 ] Pedra
+        [ 1 ] Papel
+        [ 2 ] Tesoura''')
+    Jogador= int(input('Qual é a sua jogada? '))
+    print('JO')
+    sleep(1)
+    print('KEN')
+    sleep(1)
+    print('PO!')
+    print('-=' * 11)
+    print('Computador jogou {}'.format(itens[Computador]))
+    print('Jogador jogou {}'.format(itens[Jogador]))
+    print('-=' *11)
+    if Computador >= 3:
+        print('JOGADA INVÁLIDA')
+    else:
+        if Computador == 0:
+            if Jogador == 0:
+                print('EMPATE')
+                contempate += 1
+            elif Jogador == 1:
+                print('JOGADOR VENCE')
+                contjogador += 1
+            elif Jogador == 2:
+                print('COMPUTADOR VENCE')
+                contcomputador += 1
+        elif Computador == 1:
+            if Jogador == 0:
+                print('COMPUTADOR VENCE')
+                contcomputador += 1
+            elif Jogador == 1:
+                print("EMPATE")
+                contempate += 1
+            elif Jogador == 2:
+                print('JOGADOR VENCE')
+                contjogador += 1
+        elif Computador == 2:
+            if Jogador == 0:
+                print('JOGADOR VENCE')
+                contjogador += 1
+            elif Jogador == 1:
+                print('COMPUTADOR VENCE')
+                contcomputador += 1
+            elif Jogador == 2:
+                print('EMPATE')
+                contempate += 1
+        print('HISTORICO')
+        print(f'Computador venceu: {contcomputador}')
+        print(f'Jogador venceu: {contjogador} ')
+        print(f'Empates: {contempate}')
+        while teste == 0:
+            Rodada = input('Deseja jogar novamente? Sim ou Nao? ')
+            if Rodada == 'Sim' or Rodada == 's' or Rodada == 'sim' or Rodada == 'y' or Rodada == 'SIM':
+                teste = 1
+                Rodada = 'Sim'
+            elif Rodada == 'Nao' or Rodada == 'NAO' or Rodada == 'n'or Rodada == 'no' or Rodada == 'não' or Rodada == 'Não':
+                teste = 1
+            else:
+                print('OPÇÃO INVALIDA')
+                print('Obrigada!')

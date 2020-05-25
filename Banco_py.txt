@@ -1,0 +1,69 @@
+print('=' * 30)
+print('{:^30}'.format('BANCO CARRION'))
+print('=' * 30)
+print('Faça um deposito: ')
+totalcem = int(input('Notas de cem: '))
+totalcinq = int(input('Notas de cinquenta: '))
+totalvinte = int(input('Notas de vinte: '))
+totaldez = int(input('Notas de dez: '))
+while True:
+    resp = input('Você deseja realizar um saque?')
+    if resp == 'Sim' or resp == 's' or resp == 'yes' or resp == "sim":
+        valor = int(input('Qual valor deseja sacar? R$'))
+        total = valor
+        ced = 100
+        totaced = 0
+        caixa = (totalcem * 100) + (totalcinq * 50) + (totalvinte * 20) + (totaldez * 10)
+        if caixa >= total:
+            while total > 0 :
+                if total >=  ced and totalcem > 0:
+                    total -= ced
+                    totaced += 1
+                    totalcem -= 1
+                    if (totalcem == 0 or total < ced) and totaced > 0:
+                        print(f'Total de {totaced} cédulas de R${ced}')
+                        totaced = 0
+                else:
+                    if totaced > 0 and totalcinq > 0 and (total - 50 >= 0):
+                        ced = 50
+                        total -= ced
+                        totaced += 1
+                        totalcinq -= 1
+                        if (totalcinq == 0 or total < ced) and totaced > 0:
+                            print(f'Total de {totaced} cédulas de R${ced}')
+                    elif total > 0 and totalvinte > 0 and (total - 20 >= 0):
+                        ced = 20
+                        total -= ced
+                        totaced += 1
+                        totalvinte -= 1
+                        if(totalvinte == 0 or total < ced) and totaced > 0:
+                            print(f'Total de {totaced} cédulas de R${ced}')
+                            totaced = 0
+                    elif total > 0 and totaldez > 0:
+                            ced = 10
+                            total -= ced
+                            totaced += 1
+                            totaldez -= 1
+                            if (totaldez == 0 or total < ced) and totaced > 0:
+                                print(f'Total de {totaced} cédulas de R${ced}')
+                                totaced=0
+        else:
+            print(f'Caixa Eletronico não tem notas suficientes. Saque maximo possivel: {caixa}')
+            while True:
+                resp = input(' Voce deseja realizar um deposito? ')
+                if resp == 'Sim' or resp == 's' or resp == 'yes' or resp == 'sim':
+                    totalcem = int(input('Notas de cem: '))
+                    totalcinq = int(input('Notas de cinquenta: '))
+                    totalvinte = int(input('Notas de vinte: '))
+                    totaldez = int(input('Notas de dez: '))
+                    break
+                elif resp == 'Nao' or resp == 'n' or resp == 'nao' or resp == 'no':
+                    desp = input('Caixa eletronico nao tem notas suficentes. Realize um deposito se desejar efeturar um saque.')
+                    break
+                else:
+                    print('Opção invalida')
+    elif resp == 'Nao' or resp == 'n' or resp =='nao' or resp == 'no':
+        desp= input('Obrigada por utlizar o nosso banco! Sessa encerrada.')
+        break
+    else:
+        print('Opcao invalida')
